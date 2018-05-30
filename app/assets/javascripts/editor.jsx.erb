@@ -1,0 +1,31 @@
+class App extends React.Component {
+    constructor(props) {
+        super();
+
+        this.state = {
+            currentComponent: null
+        }
+    }
+    render() {
+        return (
+            <div style={{ display: 'flex', borderTop: '1px solid #999' }}>
+                <LeftPanel />
+                <Main />
+                <div id="right-panel" style={{
+                  width: 300, position: 'relative',
+                  background: '#eee',
+                }}>
+                    <PropertyPanel />
+                    <ComponentsPanel />
+                </div>
+            </div>
+        )
+    }
+}
+
+model.onChange(() => {
+    ReactDOM.render(<App />, document.getElementById('main'));
+});
+
+
+ReactDOM.render(<App />, document.getElementById('main'));

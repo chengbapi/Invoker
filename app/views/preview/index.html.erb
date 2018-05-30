@@ -1,0 +1,30 @@
+<div id="main">
+
+</div>
+
+
+<script>
+    window.activity_id = '<%= @activity.id %>'
+    window.params = <%= @params.html_safe %>
+    window.page = <%= @page.html_safe %>
+
+    // replace params
+    window.page.components.forEach(function(c) {
+        Object.keys(c.property).forEach(function(k) {
+            if (c.property[k] && c.property[k].length > 0) {
+                var v = c.property[k];
+
+                c.property[k] = v.replace(/\$(\w+)/g, function($, $1) {
+                  if (window.params[$1] !== undefined) {
+                    return window.params[$1];
+                  } else {
+                    return $;
+                  }
+                });
+
+            }
+        })
+    })
+</script>
+
+<%= javascript_include_tag 'preview' %>

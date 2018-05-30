@@ -1,0 +1,33 @@
+<h3 style="text-align: center"><%= @activity.name %></h3>
+
+<div id="main">
+
+</div>
+
+<hr>
+
+<h3>数据结构</h3>
+
+
+<%= render 'form', activity: @activity %>
+
+<%= link_to 'Show', @activity %> |
+<%= link_to 'Back', activities_path %>
+
+<script>
+    window.model = new Model(
+        {
+            activity: {
+                id: '<%= @activity.id %>',
+                name: '<%= @activity.name %>',
+                <% if @activity.pages.present? %>
+                  pages: <%= @activity.pages.html_safe %>,
+                <% end %>
+            }
+        }
+    );
+
+</script>
+
+<%= javascript_include_tag 'editor', 'data-turbolinks-track': 'reload' %>
+
