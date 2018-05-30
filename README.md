@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A visualized production operation producer platform for PM.
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+install gem
+`bundle install`
 
-* Configuration
+Database creation
+`rake db:create`
 
-* Database creation
+start service
+`rails s`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+supported by React, GraphQL, RoR
