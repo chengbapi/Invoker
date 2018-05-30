@@ -24,29 +24,28 @@ ActiveRecord::Schema.define(version: 20170816121629) do
     t.string   "title"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "min_comment_length"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string   "name"
     t.string   "desc"
-    t.integer  "author_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index [nil], name: "index_books_on_author_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
     t.text     "body"
     t.integer  "article_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.integer  "commenter"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,6 +53,7 @@ ActiveRecord::Schema.define(version: 20170816121629) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "avatar"
   end
 
 end
